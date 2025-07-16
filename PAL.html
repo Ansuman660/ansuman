@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PAL ENTERPRISES - Premium Steel & Plates</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(45deg, #1a237e, #3949ab, #5e35b1, #7b1fa2);
+            background-size: 400% 400%;
+            animation: gradientShift 8s ease infinite;
+            min-height: 100vh;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            animation: slideInDown 1s ease-out;
+        }
+
+        .logo {
+            font-size: 4em;
+            font-weight: bold;
+            margin-bottom: 10px;
+            background: linear-gradient(45deg, #ff6b35, #f7931e, #ffcc02, #37b24d);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: logoGlow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes logoGlow {
+            0% { text-shadow: 0 0 20px rgba(255, 107, 53, 0.5); }
+            100% { text-shadow: 0 0 30px rgba(255, 107, 53, 0.8), 0 0 40px rgba(247, 147, 30, 0.6); }
+        }
+
+        .tagline {
+            font-size: 1.4em;
+            color: #ffd700;
+            margin-bottom: 20px;
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+
+        .nav-menu {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .nav-item {
+            background: linear-gradient(45deg, #ff4757, #ff6b35);
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #37b24d, #51cf66);
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+
+        .nav-item:hover::before {
+            left: 0;
+        }
+
+        .nav-item:hover {
+            transform: scale(1.1);
+            box-shadow: 0 10px 30px rgba(255, 71, 87, 0.4);
+        }
+
+        .hero-section {
+            text-align: center;
+            margin-bottom: 60px;
+            animation: fadeInUp 1.5s ease-out;
+        }
+
+        .hero-title {
+            font-size: 3em;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #ff6b35, #ffd700, #37b24d, #339af0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: colorShift 4s ease infinite;
+        }
+
+        @keyframes colorShift {
+            0%, 100% { filter: hue-rotate(0deg); }
+            50% { filter: hue-rotate(180deg); }
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .product-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(15px);
+            border: 2px solid transparent;
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, #ff6b35, #f7931e, #ffcc02, #37b24d, #339af0, #7c4dff);
+            background-size: 400% 400%;
+            animation: borderGlow 3s ease infinite;
+            z-index: -1;
+            border-radius: 20px;
+        }
+
+        .product-card::after {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 2px;
+            right: 2px;
+            bottom: 2px;
+            background: rgba(26, 35, 126, 0.9);
+            border-radius: 18px;
+            z-index: -1;
+        }
+
+        @keyframes borderGlow {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        .product-card:hover {
+            transform: translateY(-15px) scale(1.05);
+            box-shadow: 0 25px 50px rgba(255, 107, 53, 0.3);
+        }
+
+        .product-icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .product-card:nth-child(1) .product-icon { color: #ff6b35; animation-delay: 0s; }
+        .product-card:nth-child(2) .product-icon { color: #37b24d; animation-delay: 0.3s; }
+        .product-card:nth-child(3) .product-icon { color: #339af0; animation-delay: 0.6s; }
+        .product-card:nth-child(4) .product-icon { color: #7c4dff; animation-delay: 0.9s; }
+
+        .product-title {
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            color: #ffd700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .product-description {
+            line-height: 1.6;
+            opacity: 0.9;
+            margin-bottom: 20px;
+        }
+
+        .price {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #51cf66;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .cta-section {
+            text-align: center;
+            margin: 60px 0;
+            animation: slideInUp 2s ease-out;
+        }
+
+        .cta-button {
+            background: linear-gradient(45deg, #ff4757, #ff6b35, #f7931e, #ffcc02);
+            background-size: 400% 400%;
+            animation: gradientShift 3s ease infinite;
+            color: white;
+            padding: 20px 50px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.3em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin: 15px;
+            box-shadow: 0 10px 30px rgba(255, 71, 87, 0.4);
+        }
+
+        .cta-button:hover {
+            transform: scale(1.1) rotate(2deg);
+            box-shadow: 0 15px 40px rgba(255, 71, 87, 0.6);
+        }
+
+        .features-section {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 25px;
+            padding: 50px;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .features-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, rgba(255, 107, 53, 0.1), rgba(55, 178, 77, 0.1), rgba(51, 154, 240, 0.1));
+            border-radius: 25px;
+            z-index: -1;
+        }
+
+        .features-title {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 40px;
+            color: #ffd700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .feature-item {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .feature-icon-small {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            color: #ff6b35;
+        }
+
+        .contact-section {
+            text-align: center;
+            background: linear-gradient(45deg, #ff4757, #ff6b35, #f7931e);
+            border-radius: 25px;
+            padding: 50px;
+            margin-bottom: 50px;
+            animation: slideInLeft 2s ease-out;
+        }
+
+        .contact-title {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+        }
+
+        .contact-item {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 20px;
+            min-width: 200px;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 20px;
+            margin-top: 50px;
+        }
+
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .logo {
+                font-size: 2.5em;
+            }
+            
+            .hero-title {
+                font-size: 2em;
+            }
+            
+            .nav-menu {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">PAL ENTERPRISES</div>
+            <div class="tagline">Premium Steel & Plate Specialists</div>
+        </div>
+
+        <nav class="nav-menu">
+            <a href="#home" class="nav-item">Home</a>
+            <a href="#products" class="nav-item">Products</a>
+            <a href="#services" class="nav-item">Services</a>
+            <a href="#about" class="nav-item">About</a>
+            <a href="#contact" class="nav-item">Contact</a>
+        </nav>
+
+        <div class="hero-section">
+            <h1 class="hero-title">Quality Steel Solutions for Every Need</h1>
+            <p style="font-size: 1.2em; margin-bottom: 30px;">Trusted by industries worldwide for premium steel plates, structural steel, and custom fabrication</p>
+        </div>
+
+        <div class="products-grid" id="products">
+            <div class="product-card">
+                <div class="product-icon">🏗️</div>
+                <h3 class="product-title">Steel Plates</h3>
+                <p class="product-description">High-grade steel plates in various thicknesses and specifications. Perfect for construction, manufacturing, and industrial applications.</p>
+                <div class="price">Starting at ₹45/kg</div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-icon">🔧</div>
+                <h3 class="product-title">Structural Steel</h3>
+                <p class="product-description">I-beams, H-beams, channels, and angles. Engineered for strength and durability in construction projects.</p>
+                <div class="price">Starting at ₹52/kg</div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-icon">⚙️</div>
+                <h3 class="product-title">Custom Fabrication</h3>
+                <p class="product-description">Precision cutting, welding, and fabrication services. Tailored solutions for your specific requirements.</p>
+                <div class="price">Custom Pricing</div>
+            </div>
+
+            <div class="product-card">
+                <div class="product-icon">🛠️</div>
+                <h3 class="product-title">Specialty Alloys</h3>
+                <p class="product-description">Stainless steel, carbon steel, and specialized alloys for demanding applications and environments.</p>
+                <div class="price">Starting at ₹85/kg</div>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <a href="#contact" class="cta-button">Get Quote Now</a>
+            <a href="#products" class="cta-button">View Catalog</a>
+        </div>
+
+        <div class="features-section">
+            <h2 class="features-title">Why Choose PAL ENTERPRISES?</h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon-small">🏆</div>
+                    <h4>Premium Quality</h4>
+                    <p>ISO certified materials meeting international standards</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon-small">⚡</div>
+                    <h4>Fast Delivery</h4>
+                    <p>Quick turnaround times with reliable supply chain</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon-small">💰</div>
+                    <h4>Best Prices</h4>
+                    <p>Competitive pricing with bulk order discounts</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon-small">🔧</div>
+                    <h4>Expert Support</h4>
+                    <p>Technical assistance and custom solutions</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="contact-section" id="contact">
+            <h2 class="contact-title">Contact Us Today</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <h4>📞 Phone</h4>
+                    <p>+91 9876543210</p>
+                </div>
+                <div class="contact-item">
+                    <h4>📧 Email</h4>
+                    <p>info@palenterprises.com</p>
+                </div>
+                <div class="contact-item">
+                    <h4>📍 Address</h4>
+                    <p>Industrial Area, Mumbai</p>
+                </div>
+            </div>
+            <a href="#" class="cta-button">Request Callback</a>
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2024 PAL ENTERPRISES. All rights reserved.</p>
+            <p>Your trusted partner in steel solutions</p>
+        </div>
+    </div>
+
+    <script>
+        // Add smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add floating animation to product cards
+        document.querySelectorAll('.product-card').forEach((card, index) => {
+            card.style.animationDelay = `${index * 0.2}s`;
+            card.style.animation = 'fadeInUp 1s ease-out forwards';
+        });
+
+        // Add click effects to buttons
+        document.querySelectorAll('.cta-button').forEach(button => {
+            button.addEventListener('click', function(e) {
+                let ripple = document.createElement('span');
+                ripple.style.position = 'absolute';
+                ripple.style.borderRadius = '50%';
+                ripple.style.background = 'rgba(255,255,255,0.6)';
+                ripple.style.transform = 'scale(0)';
+                ripple.style.animation = 'ripple 0.6s linear';
+                ripple.style.left = (e.clientX - e.target.offsetLeft) + 'px';
+                ripple.style.top = (e.clientY - e.target.offsetTop) + 'px';
+                
+                this.appendChild(ripple);
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            });
+        });
+    </script>
+</body>
+</html>
